@@ -49,8 +49,8 @@ public class StudentMasterController : ControllerBase
         return Ok(student);
     }
 
-    [HttpPut]
-    public async Task<ActionResult> UpdateStudent([FromBody] Student student)
+    [HttpPut("{id}")]
+    public async Task<ActionResult> UpdateStudent(int id, [FromBody] Student student)
     {
         var record = await _context.Students.FindAsync(student.studentId);
         if (record == null)
