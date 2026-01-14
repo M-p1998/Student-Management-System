@@ -1,0 +1,129 @@
+<div class="container mt-4">
+
+  <h2 class="mb-3">Student CRUD</h2>
+
+  <!-- FORM -->
+  <div class="card mb-4">
+    <div class="card-header">
+      {{ student.studentId ? 'Edit Student' : 'Add Student' }}
+    </div>
+
+    <div class="card-body">
+      <form (ngSubmit)="saveStudent()">
+
+        <div class="row mb-3">
+          <div class="col">
+            <input class="form-control"
+                   placeholder="Name"
+                   [(ngModel)]="student.studName"
+                   name="studName"
+                   required>
+          </div>
+          <div class="col">
+            <input class="form-control"
+                   placeholder="Email"
+                   [(ngModel)]="student.email"
+                   name="email"
+                   required>
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <input class="form-control"
+                   placeholder="City"
+                   [(ngModel)]="student.city"
+                   name="city">
+          </div>
+          <div class="col">
+            <input class="form-control"
+                   placeholder="State"
+                   [(ngModel)]="student.state"
+                   name="state">
+          </div>
+        </div>
+
+        <div class="row mb-3">
+          <div class="col">
+            <input class="form-control"
+                   placeholder="Mobile Number"
+                   [(ngModel)]="student.mobileNumber"
+                   name="mobileNumber">
+          </div>
+          <div class="col">
+            <input class="form-control"
+                   placeholder="Zipcode"
+                   [(ngModel)]="student.zipcode"
+                   name="zipcode">
+          </div>
+        </div>
+
+        <input class="form-control mb-2"
+               placeholder="Address Line 1"
+               [(ngModel)]="student.addressLine1"
+               name="addressLine1">
+
+        <input class="form-control mb-3"
+               placeholder="Address Line 2"
+               [(ngModel)]="student.addressLine2"
+               name="addressLine2">
+
+        <button type="submit" class="btn btn-success">
+          {{ student.studentId ? 'Update' : 'Save' }}
+        </button>
+
+        <button type="button"
+                class="btn btn-secondary ms-2"
+                (click)="resetForm()">
+          Clear
+        </button>
+
+      </form>
+    </div>
+  </div>
+
+  <!-- TABLE -->
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>City</th>
+        <th>State</th>
+        <th>Mobile Number</th>
+        <th>Zipcode</th>
+        <th>Address Line 1</th>
+        <th>Address Line 2</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let s of students">
+        <td>{{ s.studentId }}</td>
+        <td>{{ s.studName }}</td>
+        <td>{{ s.email }}</td>
+        <td>{{ s.city }}</td>
+        <td>{{ s.state }}</td>
+        <td>{{ s.mobileNumber }}</td>
+        <td>{{ s.zipcode }}</td>
+        <td>{{ s.addressLine1 }}</td>
+        <td>{{ s.addressLine2 }}</td>
+
+        <td>
+          <button class="btn btn-sm btn-primary me-2"
+                  (click)="editStudent(s)">
+            Edit
+          </button>
+
+          <button class="btn btn-sm btn-danger"
+                  (click)="deleteStudent(s.studentId!)">
+            Delete
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>
