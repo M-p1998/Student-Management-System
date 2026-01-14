@@ -2,6 +2,12 @@
 
   <h2 class="mb-3 text-center">Student CRUD</h2>
 
+  <div class="row mb-3">
+  <div class="col-12 col-md-4">
+    <input id="searchBox" class="form-control" placeholder="Search students...">
+  </div>
+</div>
+
   <!-- FORM -->
   <div class="card mb-4 shadow-sm">
     <div class="card-header">
@@ -107,7 +113,8 @@
       </thead>
 
       <tbody>
-        <tr *ngFor="let s of students">
+        <!-- <tr *ngFor="let s of students"> -->
+        <tr *ngFor="let s of students" [attr.id]="'row-' + s.studentId">
           <td>{{ s.studentId }}</td>
           <td>{{ s.studName }}</td>
           <td>{{ s.email }}</td>
